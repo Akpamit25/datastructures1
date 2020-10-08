@@ -1,29 +1,19 @@
 package com.Capgemini.datastructures;
 
-
-public class MyNode<K> implements INode<K> {
+public class MyNode<K> {
 	private K key;
-	private INode next;
-
+	private MyNode<K> next;
+	
 	public MyNode(K key) {
-		this.key = key;
-		this.next = null;
+		this.key= key;
 	}
 
-	public void setKey(K key) {
-		this.key = key;
-	}
-
-	public INode<K> getNext() {
+	public MyNode getNext() {
 		return next;
 	}
 
-	public void setNext(INode next) {//
+	public void setNext(MyNode next) {
 		this.next = next;
 	}
-
-	@Override
-	public K getKey() {
-		return this.key;
-	}
+	
 }
