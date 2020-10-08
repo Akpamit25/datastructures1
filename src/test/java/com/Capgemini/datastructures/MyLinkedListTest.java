@@ -20,9 +20,9 @@ public class MyLinkedListTest {
 		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
 				&& myLinkedList.tail.equals(myThirdNode);
 
-		assertTrue(result);
+		assertTrue(result);//
 	}
-
+//
 	@Test
 	public void InsertInMiddleReturnsTrue() {
 		MyNode<Integer> MyFirstNode = new MyNode<>(56);

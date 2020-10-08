@@ -10,3 +10,4 @@ public interface INode<K> {
 	void setNext(INode next);
 
 }
+//

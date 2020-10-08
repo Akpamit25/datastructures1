@@ -2,7 +2,7 @@ package com.Capgemini.datastructures;
 
 public class MyLinkedList<K> {
 
-	public INode<K> head;
+	public INode<K> head;//
 	public INode<K> tail;
 
 	public MyLinkedList() {
