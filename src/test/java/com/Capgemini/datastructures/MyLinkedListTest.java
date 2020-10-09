@@ -76,7 +76,7 @@ public class MyLinkedListTest {
 		MyNode<Integer> MySecondNode = new MyNode<>(30);
 		MyNode<Integer> MyThirdNode = new MyNode<>(70);
 		MyLinkedList myLinkedList = new MyLinkedList();
-		myLinkedList.add(MyFirstNode);//
+		myLinkedList.add(MyFirstNode);
 		myLinkedList.add(MySecondNode);
 		myLinkedList.add(MyThirdNode);
 		MyNode<Integer> MyFourthNode = new MyNode<>(40);
@@ -96,9 +96,27 @@ public class MyLinkedListTest {
 		myLinkedList.add(MySecondNode);
 		myLinkedList.add(MyThirdNode);
 		myLinkedList.printList();
-		INode result = myLinkedList.popLast();
+		INode result = myLinkedList.popLast();//
 		myLinkedList.printList();
 		assertEquals(MyThirdNode, result);
+	}
+	
+	@Test
+	public void GivenKeyDeleteThatNodeReturnsNewListSize() {
+		MyNode<Integer> MyFirstNode = new MyNode<>(56);
+		MyNode<Integer> MySecondNode = new MyNode<>(30);
+		MyNode<Integer> MyThirdNode = new MyNode<>(40);
+		MyNode<Integer> MyFourthNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.add(MyFourthNode);
+		myLinkedList.printList();
+		myLinkedList.deleteBySearch(40);
+		myLinkedList.printList();
+		int i=myLinkedList.size();
+		assertEquals(3,i);
 	}
 
 }
