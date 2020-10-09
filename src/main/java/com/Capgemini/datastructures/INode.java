@@ -1,6 +1,5 @@
 package com.Capgemini.datastructures;
-
-public interface INode<K> {
+public interface INode<K> {//
 	K getKey();
 
 	void setKey(K key);
@@ -9,4 +8,4 @@ public interface INode<K> {
 
 	void setNext(INode next);
 
-}//
+}
