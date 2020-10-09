@@ -96,9 +96,29 @@ public class MyLinkedListTest {
 		myLinkedList.add(MySecondNode);
 		myLinkedList.add(MyThirdNode);
 		myLinkedList.printList();
-		INode result = myLinkedList.popLast();//
+		INode result = myLinkedList.popLast();
 		myLinkedList.printList();
 		assertEquals(MyThirdNode, result);
+	}
+//	
+	@Test
+	public void Given4NumbersListReturnsReturnsOrderedList() {
+		MyNode<Integer> MyFirstNode = new MyNode<>(56);
+		MyNode<Integer> MySecondNode = new MyNode<>(30);
+		MyNode<Integer> MyThirdNode = new MyNode<>(40);
+		MyNode<Integer> MyFourthNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.addInAscendingOrder(MyFirstNode);
+		myLinkedList.printList();
+		myLinkedList.addInAscendingOrder(MySecondNode);
+		myLinkedList.printList();
+		myLinkedList.addInAscendingOrder(MyThirdNode);
+		myLinkedList.printList();
+		myLinkedList.addInAscendingOrder(MyFourthNode);
+		myLinkedList.printList();
+		boolean result = myLinkedList.getHead().getKey().equals(30) && myLinkedList.getTail().getKey().equals(70);
+		assertEquals(true, result);
+
 	}
 	
 	@Test

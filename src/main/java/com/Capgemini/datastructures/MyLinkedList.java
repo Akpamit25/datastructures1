@@ -1,12 +1,11 @@
 package com.Capgemini.datastructures;
-
-public class MyLinkedList<K> {
-	public INode<K> head;
-	public INode<K> tail;
+public class MyLinkedList {
+	public INode head;
+	public INode tail;
 
 	public MyLinkedList() {
-		head = null;
-		tail = null;
+		this.head = null;
+		this.tail = null;
 	}
 
 	public INode getHead() {
@@ -15,6 +14,18 @@ public class MyLinkedList<K> {
 
 	public INode getTail() {
 		return tail;
+	}
+	
+	public void add1(INode node) {
+		if (this.tail == null)
+			this.tail = node;
+		if (this.head == null)
+			this.head = node;
+		else {
+			INode temp = this.head;
+			this.head = node;
+			this.head.setNext(temp);
+		}
 	}
 
 	public void add(INode myNode) {
@@ -53,12 +64,12 @@ public class MyLinkedList<K> {
 		System.out.println(myNodes);
 	}
 	
-	public void insertBySearch(K i, INode newNode) {
+	public void insertBySearch(Integer i, INode newNode) {
 		insertMiddle(searchNode(i), newNode);
 
 	}
 	
-	public INode searchNode(K i) {
+	public INode searchNode(Integer i) {
 		INode temp=this.head;
 		while(temp.getNext()!=null)
 		{
@@ -87,13 +98,13 @@ public class MyLinkedList<K> {
 		return temp2;
 	}
 	
-	public void deleteBySearch(K i) {
+	public void deleteBySearch(Integer i) {
 		INode searchRes = searchNode(i);
 		INode temp = this.head;
 		if (temp.getNext() == null || searchRes.equals(temp))
 			popFront();
 		else if (searchRes.equals(tail))
-			popLast();//
+			popLast();
 		else {
 			while (temp.getNext() != null) {
 				if (temp.getNext().equals(searchRes)) {
@@ -120,4 +131,22 @@ public class MyLinkedList<K> {
 			return count;
 		}
 	}
+	
+	public void addInAscendingOrder(INode node) {
+		if (this.head == null || node.getKey().compareTo(this.head.getKey()) < 0)
+			add1(node);
+		else {
+			INode temp = this.head;
+			while (temp.getNext() != null) {
+				if (( node.getKey()).compareTo(temp.getNext().getKey()) < 0) {
+					insertMiddle(temp, node);
+					break;
+				}
+				temp = temp.getNext();
+			}
+			if (temp.getNext() == null)
+				add(node);
+		}
+	}
+
 }
