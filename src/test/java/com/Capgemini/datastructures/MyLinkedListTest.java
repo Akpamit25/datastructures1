@@ -69,6 +69,22 @@ public class MyLinkedListTest {
 		System.out.println(result.getKey());
 		assertEquals(MySecondNode, result);
 	}
+	
+	@Test
+	public void WhenAddNewNumberBetweenNodesReturnsTrue() {
+		MyNode<Integer> MyFirstNode = new MyNode<>(56);
+		MyNode<Integer> MySecondNode = new MyNode<>(30);
+		MyNode<Integer> MyThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(MyFirstNode);//
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyThirdNode);
+		MyNode<Integer> MyFourthNode = new MyNode<>(40);
+		myLinkedList.insertBySearch(30,MyFourthNode);
+		myLinkedList.printList();
+		boolean result=myLinkedList.searchNode(30).getNext().getKey().equals(40);
+		assertEquals(true, result);
+	}
 
 	@Test
 	public void WhenLastNodePoppedReturnsLastNode() {
