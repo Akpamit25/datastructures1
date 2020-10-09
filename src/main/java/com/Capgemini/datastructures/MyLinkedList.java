@@ -1,35 +1,75 @@
 package com.Capgemini.datastructures;
 
-public class MyLinkedList<K> {
-	public INode<K> head;
-	public INode<K> tail;
+import static org.junit.Assert.*;
 
-	public MyLinkedList() {
-		head = null;
-		tail = null;
+import org.junit.Test;
+
+public class MyLinkedListTest {
+
+	@Test
+	public void given3NumbersWhenAddedToLinkedListShouldBeAddedToRear() {
+		MyNode myFirstNode = new MyNode(56);
+		MyNode mySecondNode = new MyNode(30);
+		MyNode myThirdNode = new MyNode(70);
+
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(myFirstNode);
+		myLinkedList.add(mySecondNode);
+		myLinkedList.add(myThirdNode);
+		myLinkedList.printList();
+		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
+				&& myLinkedList.tail.equals(myThirdNode);
+
+		assertTrue(result);
 	}
 
-	public void add(INode myNode) {
-		if (this.tail == null)
-			this.tail = myNode;
-		if (this.head == null)
-			this.head = myNode;
-		else {
-			this.tail.setNext(myNode);
-			this.tail = myNode;
-		}
+	@Test
+	public void InsertInMiddleReturnsTrue() {
+		MyNode<Integer> MyFirstNode = new MyNode<>(56);
+		MyNode<Integer> MySecondNode = new MyNode<>(30);
+		MyNode<Integer> MyThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.printList();
+		myLinkedList.insertMiddle(MyFirstNode, MySecondNode);
+		myLinkedList.printList();
+		boolean result = myLinkedList.getHead().equals(MyFirstNode)
+				&& myLinkedList.getHead().getNext().equals(MySecondNode)
+				&& myLinkedList.getHead().getNext().getNext().equals(MyThirdNode)
+				&& myLinkedList.getTail().equals(MyThirdNode);
+		assertEquals(true, result);
+	}
+	
+	@Test
+	public void NodeWhenPoppedReturnsNewList() {
+		MyNode<Integer> MyFirstNode = new MyNode<>(56);
+		MyNode<Integer> MySecondNode = new MyNode<>(30);
+		MyNode<Integer> MyThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.printList();
+		INode result=myLinkedList.popFront();
+		myLinkedList.printList();
+		assertEquals(MyFirstNode,result);
+	}
+	
+	@Test
+	public void WhenLastNodePoppedReturnsLastNode() {
+		MyNode<Integer> MyFirstNode = new MyNode<>(56);
+		MyNode<Integer> MySecondNode = new MyNode<>(30);
+		MyNode<Integer> MyThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.printList();
+		INode result=myLinkedList.popLast();
+		myLinkedList.printList();
+		assertEquals(MyThirdNode,result);
 	}
 
-	public void printList() {
-		StringBuffer myNodes = new StringBuffer("My Nodes : ");
-		INode temp = head;
-		while (temp.getNext() != null) {
-			myNodes.append(temp.getKey());
-			if (!temp.equals(tail))
-				myNodes.append("->");
-			temp = temp.getNext();
-		}
-		myNodes.append(temp.getKey());
-		System.out.println(myNodes);
-	}
+
 }

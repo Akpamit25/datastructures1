@@ -23,4 +23,37 @@ public class MyLinkedListTest {
 		assertTrue(result);
 	}
 
+	@Test
+	public void InsertInMiddleReturnsTrue() {
+		MyNode<Integer> MyFirstNode = new MyNode<>(56);
+		MyNode<Integer> MySecondNode = new MyNode<>(30);
+		MyNode<Integer> MyThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.printList();
+		myLinkedList.insertMiddle(MyFirstNode, MySecondNode);
+		myLinkedList.printList();
+		boolean result = myLinkedList.getHead().equals(MyFirstNode)
+				&& myLinkedList.getHead().getNext().equals(MySecondNode)
+				&& myLinkedList.getHead().getNext().getNext().equals(MyThirdNode)
+				&& myLinkedList.getTail().equals(MyThirdNode);
+		assertEquals(true, result);
+	}
+	
+	@Test
+	public void NodeWhenPoppedReturnsNewList() {
+		MyNode<Integer> MyFirstNode = new MyNode<>(56);
+		MyNode<Integer> MySecondNode = new MyNode<>(30);
+		MyNode<Integer> MyThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.printList();
+		INode result=myLinkedList.pop();
+		myLinkedList.printList();
+		assertEquals(MyFirstNode,result);
+	}
+
 }
